@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gastronomia - al Zoo</title>
+    <meta name="description" content="Basic HTML/Tailwind starter" />
+    <meta name="author" content="Daily Dev Tips" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="global.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <dialog
+      id="cookies-popup"
+      class="inset-0 z-60 p-0 mb-[5vw] sm:mb-[2vw] bg-transparent sm:ml-[2vw] h-min entering"
+    >
+      <div
+        class="flex items-end justify-center min-h-full p-4 text-center rounded-md sm:items-center sm:p-0"
+      >
+        <div
+          class="relative overflow-hidden text-left transition-all transform rounded-lg shadow-sm sm:w-full sm:max-w-lg"
+        >
+          <div class="px-4 pt-5 pb-4 bg-white">
+            <div class="sm:flex sm:items-start">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-gray-100 rounded-full sm:mx-0 sm:h-10 sm:w-10"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                  />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3
+                  class="text-base font-semibold leading-6 text-gray-900"
+                  id="modal-title"
+                >
+                  Preferenze Cookies
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Aliquid, ex!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex px-4 py-5 align-middle bg-gray-50 h-min">
+            <a
+              id="more-cookies"
+              href=""
+              class="inline-flex flex-1 px-3 py-2 text-sm font-semibold text-center text-gray-900 outline-none w-min h-min whitespace-nowrap"
+              >Learn more →</a
+            >
+            <button
+              id="refuse-cookies"
+              type="submit"
+              class="inline-flex justify-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm w-min ring-1 ring-inset ring-gray-300 hover:bg-gray-50 h-min"
+            >
+              Rifiuta
+            </button>
+            <button
+              autofocus
+              id="accept-cookies"
+              type="submit"
+              class="inline-flex justify-center px-3 py-2 ml-3 text-sm font-semibold text-white bg-green-600 rounded-md shadow-sm w-min hover:bg-green-500 h-min focus:outline-blue-200"
+            >
+              Accetta
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav
+        class="flex items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img
+              class="w-auto h-8"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button
+            id="open-menu-button"
+            type="menu"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="index.html" class="text-sm font-semibold leading-6 text-gray-900"
+            >Cosa facciamo</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Chi siamo</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >I nostri prodotti</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Orari e contatti</a
+          >
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="#"
+            class="text-sm font-semibold leading-6 text-gray-900 sceglilasede"
+            >Scegli La Sede <span aria-hidden="true">&darr;</span></a
+          >
+          <ul
+            id="centri-list"
+            class="absolute top-[100%] z-10 block origin-top-right bg-white rounded-md shadow-sm right-10 w-min h-min ring-1 ring-black ring-opacity-5 whitespace-nowrap"
+          >
+            <li class="hover:bg-gray-50">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                id="user-menu-item-0"
+                >Montorio</a
+              >
+            </li>
+            <li class="hover:bg-gray-50">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-1"
+                >San Michele</a
+              >
+            </li>
+            <li class="hover:bg-gray-50">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-2"
+                >Un Altro</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <dialog class="lg:hidden" id="mobile-menu">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-50 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+        >
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Your Company</span>
+              <img
+                class="w-auto h-8"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </a>
+            <button
+              id="close-menu-button"
+              type="menu"
+              class="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="flow-root mt-6">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="py-6 space-y-2">
+                <a
+                  href="index.html"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Cosa facciamo</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Chi siamo</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >I nostri prodotti</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Orari e contatti</a
+                >
+              </div>
+              <div class="py-6">
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 sceglilasede"
+                  >Scegli la sede</a
+                >
+                <ul
+                  id="centri-list"
+                  class="w-full m-0 origin-top-left bg-white whitespace-nowrap z-60"
+                >
+                  <li class="w-full m-0 hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                      >Montorio</a
+                    >
+                  </li>
+                  <li class="w-full hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-1"
+                      >San Michele</a
+                    >
+                  </li>
+                  <li class="w-full hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-2"
+                      >Un Altro</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+    </header>
+
+    <!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+    <!--
+        Mobile filter dialog
+  
+        Off-canvas filters for mobile, show/hide based on off-canvas filters state.
+      -->
+    <dialog id="mobile-filters" class="relative z-40 lg:hidden">
+      <!--
+          Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+  
+          Entering: "transition-opacity ease-linear duration-300"
+            From: "opacity-0"
+            To: "opacity-100"
+          Leaving: "transition-opacity ease-linear duration-300"
+            From: "opacity-100"
+            To: "opacity-0"
+        -->
+      <div class="fixed inset-0 bg-black bg-opacity-25"></div>
+
+      <div class="fixed inset-0 z-40 flex">
+        <!--
+            Off-canvas menu, show/hide based on off-canvas menu state.
+  
+            Entering: "transition ease-in-out duration-300 transform"
+              From: "translate-x-full"
+              To: "translate-x-0"
+            Leaving: "transition ease-in-out duration-300 transform"
+              From: "translate-x-0"
+              To: "translate-x-full"
+          -->
+        <div
+          class="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl"
+        >
+          <div class="flex items-center justify-between px-4">
+            <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+            <button
+              id="close-mobile-filters"
+              type="button"
+              class="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Filters -->
+          <form class="mt-4 border-t border-gray-200">
+            <h3 class="sr-only">Categories</h3>
+            <ul role="list" class="px-2 py-3 font-medium text-gray-900">
+              <li>
+                <a href="#" class="block px-2 py-3">Totes</a>
+              </li>
+              <li>
+                <a href="#" class="block px-2 py-3">Backpacks</a>
+              </li>
+              <li>
+                <a href="#" class="block px-2 py-3">Travel Bags</a>
+              </li>
+              <li>
+                <a href="#" class="block px-2 py-3">Hip Bags</a>
+              </li>
+              <li>
+                <a href="#" class="block px-2 py-3">Laptop Sleeves</a>
+              </li>
+            </ul>
+
+            <div class="px-4 py-6 border-t border-gray-200">
+              <h3 class="flow-root -mx-2 -my-3">
+                <!-- Expand/collapse section button -->
+                <button
+                  type="button"
+                  class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-mobile-0"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900">Color</span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-mobile-0">
+                <div class="space-y-6">
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-0"
+                      name="color[]"
+                      value="white"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-0"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >White</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-1"
+                      name="color[]"
+                      value="beige"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-1"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Beige</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-2"
+                      name="color[]"
+                      value="blue"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-2"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Blue</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-3"
+                      name="color[]"
+                      value="brown"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-3"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Brown</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-4"
+                      name="color[]"
+                      value="green"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-4"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Green</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-color-5"
+                      name="color[]"
+                      value="purple"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-color-5"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Purple</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-4 py-6 border-t border-gray-200">
+              <h3 class="flow-root -mx-2 -my-3">
+                <!-- Expand/collapse section button -->
+                <button
+                  type="button"
+                  class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-mobile-1"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900">Category</span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-mobile-1">
+                <div class="space-y-6">
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-category-0"
+                      name="category[]"
+                      value="new-arrivals"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-category-0"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >New Arrivals</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-category-1"
+                      name="category[]"
+                      value="sale"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-category-1"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Sale</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-category-2"
+                      name="category[]"
+                      value="travel"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-category-2"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Travel</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-category-3"
+                      name="category[]"
+                      value="organization"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-category-3"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Organization</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-category-4"
+                      name="category[]"
+                      value="accessories"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-category-4"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >Accessories</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-4 py-6 border-t border-gray-200">
+              <h3 class="flow-root -mx-2 -my-3">
+                <!-- Expand/collapse section button -->
+                <button
+                  type="button"
+                  class="flex items-center justify-between w-full px-2 py-3 text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-mobile-2"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900">Size</span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-mobile-2">
+                <div class="space-y-6">
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-0"
+                      name="size[]"
+                      value="2l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-0"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >2L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-1"
+                      name="size[]"
+                      value="6l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-1"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >6L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-2"
+                      name="size[]"
+                      value="12l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-2"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >12L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-3"
+                      name="size[]"
+                      value="18l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-3"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >18L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-4"
+                      name="size[]"
+                      value="20l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-4"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >20L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-mobile-size-5"
+                      name="size[]"
+                      value="40l"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-mobile-size-5"
+                      class="flex-1 min-w-0 ml-3 text-gray-500"
+                      >40L</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <main class="w-full px-4 mx-auto sm:px-6 lg:px-8">
+      <div
+        class="flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200"
+      >
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">
+          I Nostri Prodotti
+        </h1>
+
+        <div class="flex items-center">
+          <div class="relative inline-block text-left">
+            <button
+              id="open-mobile-sort"
+              type="button"
+              class="inline-flex justify-center text-sm font-medium text-gray-700 group hover:text-gray-900"
+              id="menu-button"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              Ordine
+              <svg
+                class="flex-shrink-0 w-5 h-5 ml-1 -mr-1 text-gray-400 group-hover:text-gray-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              id="mobile-sort"
+              class="absolute top-[100%] right-0 w-min h-min origin-top-right bg-white rounded-md shadow-sm z-70 ring-1 ring-black ring-opacity-5 focus:outline-none whitespace-nowrap"
+              tabindex="-1"
+            >
+              <!--
+                        Active: "bg-gray-100", Not Active: ""
+      
+                        Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
+                      -->
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-0"
+                >Più popolari</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+                >I nostri preferiti</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-2"
+                >Novità</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-3"
+                >Prezzo: dal più basso</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-4"
+                >Prezzo: dal più alto</a
+              >
+            </div>
+
+            <!--
+                Dropdown menu, show/hide based on menu state.
+  
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+          </div>
+
+          <button
+            type="button"
+            class="p-2 ml-5 -m-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+          >
+            <span class="sr-only">View grid</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <button
+            id="open-mobile-filters"
+            type="button"
+            class="p-2 ml-4 -m-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+          >
+            <span class="sr-only">Filters</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <section aria-labelledby="products-heading" class="pt-6 pb-24">
+        <h2 id="products-heading" class="sr-only">Products</h2>
+
+        <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+          <!-- Filters -->
+          <form class="hidden w-full lg:block whitespace-nowrap">
+            <h3 class="sr-only">Categories</h3>
+            <ul
+              role="list"
+              class="pb-6 space-y-4 text-sm font-medium text-gray-900 border-b border-gray-200"
+            >
+              <li>
+                <a href="#">Antipasti</a>
+              </li>
+              <li>
+                <a href="#">Primi</a>
+              </li>
+              <li>
+                <a href="#">Secondi</a>
+              </li>
+              <li>
+                <a href="#">Contorni</a>
+              </li>
+              <li>
+                <a href="#">Specialità</a>
+              </li>
+            </ul>
+
+            <div class="py-6 border-b border-gray-200">
+              
+                <!-- Expand/collapse section button -->
+                <button id="desktop-ingredients-button"
+                  type="button"
+                  class="flex items-center justify-between w-full py-3 -my-3 text-sm text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-0"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900"><h3>Ingredienti Principali</h3></span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg id="filter-section-ingredients-desktop-plus"
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg id="filter-section-ingredients-desktop-minus"
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+              </button>
+
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6 origin-top-left" id="filter-section-ingredients-desktop">
+                <div class="space-y-4">
+                  <div class="flex items-center text-left">
+                    <input
+                      id="filter-color-0"
+                      name="color[]"
+                      value="white"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-0"
+                      class="ml-3 text-sm text-gray-600"
+                      >Carne</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-color-1"
+                      name="color[]"
+                      value="beige"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-1"
+                      class="ml-3 text-sm text-gray-600"
+                      >Verdure</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-color-2"
+                      name="color[]"
+                      value="blue"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-2"
+                      class="ml-3 text-sm text-gray-600"
+                      >Cereali</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-color-3"
+                      name="color[]"
+                      value="brown"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-3"
+                      class="ml-3 text-sm text-gray-600"
+                      >Latticini</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-color-4"
+                      name="color[]"
+                      value="green"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-4"
+                      class="ml-3 text-sm text-gray-600"
+                      >Dolci</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-color-5"
+                      name="color[]"
+                      value="purple"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-color-5"
+                      class="ml-3 text-sm text-gray-600"
+                      >Altro</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-200">
+                <!-- Expand/collapse section button -->
+                <button id="desktop-allergens-button"
+                  type="button"
+                  class="flex items-center justify-between w-full py-3 -my-3 text-sm text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-1"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900"><h3>Allergeni</h3></span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg id="filter-section-allergens-desktop-plus"
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg id="filter-section-allergens-desktop-minus"
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6 origin-top-left" id="filter-section-allergens-desktop">
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <input
+                      id="filter-category-0"
+                      name="category[]"
+                      value="new-arrivals"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-category-0"
+                      class="ml-3 text-sm text-gray-600"
+                      >Glutine</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-category-1"
+                      name="category[]"
+                      value="sale"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-category-1"
+                      class="ml-3 text-sm text-gray-600"
+                      >Frutta secca</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-category-2"
+                      name="category[]"
+                      value="travel"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-category-2"
+                      class="ml-3 text-sm text-gray-600"
+                      >Lattosio</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-category-3"
+                      name="category[]"
+                      value="organization"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-category-3"
+                      class="ml-3 text-sm text-gray-600"
+                      >Altro</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-category-4"
+                      name="category[]"
+                      value="accessories"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-category-4"
+                      class="ml-3 text-sm text-gray-600"
+                      >Boh</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-200">
+              <h3 class="flow-root -my-3">
+                <!-- Expand/collapse section button -->
+                <button
+                  type="button"
+                  class="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500"
+                  aria-controls="filter-section-2"
+                  aria-expanded="false"
+                >
+                  <span class="font-medium text-gray-900">Size</span>
+                  <span class="flex items-center ml-6">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                      />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-2">
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-0"
+                      name="size[]"
+                      value="2l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-0"
+                      class="ml-3 text-sm text-gray-600"
+                      >2L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-1"
+                      name="size[]"
+                      value="6l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-1"
+                      class="ml-3 text-sm text-gray-600"
+                      >6L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-2"
+                      name="size[]"
+                      value="12l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-2"
+                      class="ml-3 text-sm text-gray-600"
+                      >12L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-3"
+                      name="size[]"
+                      value="18l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-3"
+                      class="ml-3 text-sm text-gray-600"
+                      >18L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-4"
+                      name="size[]"
+                      value="20l"
+                      type="checkbox"
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-4"
+                      class="ml-3 text-sm text-gray-600"
+                      >20L</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="filter-size-5"
+                      name="size[]"
+                      value="40l"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    />
+                    <label
+                      for="filter-size-5"
+                      class="ml-3 text-sm text-gray-600"
+                      >40L</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Product grid -->
+          <div class="w-full bg-gray-100 lg:col-span-3">
+            <!-- Your content -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

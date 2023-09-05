@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gustoteca al Zoo</title>
+    <meta name="description" content="Basic HTML/Tailwind starter" />
+    <meta name="author" content="Daily Dev Tips" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="global.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <dialog
+      id="cookies-popup"
+      class="inset-0 z-60 p-0 mb-[5vw] sm:mb-[2vw] bg-transparent sm:ml-[2vw] h-min entering"
+    >
+      <div
+        class="flex items-end justify-center min-h-full p-4 text-center rounded-md sm:items-center sm:p-0"
+      >
+        <div
+          class="relative overflow-hidden text-left transition-all transform rounded-lg shadow-sm sm:w-full sm:max-w-lg"
+        >
+          <div class="px-4 pt-5 pb-4 bg-white">
+            <div class="sm:flex sm:items-start">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-gray-100 rounded-full sm:mx-0 sm:h-10 sm:w-10"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                  />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3
+                  class="text-base font-semibold leading-6 text-gray-900"
+                  id="modal-title"
+                >
+                  Preferenze Cookies
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Aliquid, ex!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex px-4 py-5 align-middle bg-gray-50 h-min">
+            <a
+              id="more-cookies"
+              href=""
+              class="inline-flex flex-1 px-3 py-2 text-sm font-semibold text-center text-gray-900 outline-none w-min h-min whitespace-nowrap"
+              >Learn more →</a
+            >
+            <button
+              id="refuse-cookies"
+              type="submit"
+              class="inline-flex justify-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm w-min ring-1 ring-inset ring-gray-300 hover:bg-gray-50 h-min"
+            >
+              Rifiuta
+            </button>
+            <button
+              autofocus
+              id="accept-cookies"
+              type="submit"
+              class="inline-flex justify-center px-3 py-2 ml-3 text-sm font-semibold text-white bg-green-600 rounded-md shadow-sm w-min hover:bg-green-500 h-min focus:outline-blue-200"
+            >
+              Accetta
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav
+        class="flex items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img
+              class="w-auto h-8"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button
+            id="open-menu-button"
+            type="menu"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="index.html" class="text-sm font-semibold leading-6 text-gray-900"
+            >Cosa facciamo</a
+          >
+          <a href="chisiamo.html" class="text-sm font-semibold leading-6 text-gray-900"
+            >Chi siamo</a
+          >
+          <a href="gastronomia.html" class="text-sm font-semibold leading-6 text-gray-900"
+            >I nostri prodotti</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Orari e contatti</a
+          >
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900 sceglilasede"
+            >Scegli La Sede <span aria-hidden="true">&darr;</span></a
+          >
+          <ul
+                  id="centri-list"
+                  class="absolute top-[100%] z-10 block origin-top-right bg-white rounded-md shadow-sm right-10 w-min h-min ring-1 ring-black ring-opacity-5 whitespace-nowrap"
+                >
+                  <li class="hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                      >Montorio</a
+                    >
+                  </li>
+                  <li class="hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-1"
+                      >San Michele</a
+                    >
+                  </li>
+                  <li class="hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-2"
+                      >Un Altro</a
+                    >
+                  </li>
+                </ul>
+        </div>
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <dialog class="lg:hidden" id="mobile-menu">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-50 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+        >
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Your Company</span>
+              <img
+                class="w-auto h-8"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </a>
+            <button
+              id="close-menu-button"
+              type="menu"
+              class="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="flow-root mt-6">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="py-6 space-y-2">
+                <a
+                  href="index.html"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Cosa facciamo</a
+                >
+                <a
+                  href="chisiamo.html"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Chi siamo</a
+                >
+                <a
+                  href="gastronomia.html"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >I nostri prodotti</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 -mx-3 text-base font-semibold leading-7 text-gray-900 rounded-lg hover:bg-gray-50"
+                  >Orari e contatti</a
+                >
+              </div>
+              <div class="py-6">
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 sceglilasede"
+                  >Scegli la sede</a
+                >
+                <ul
+                  id="centri-list"
+                  class="w-full m-0 origin-top-left bg-white whitespace-nowrap z-60"
+                >
+                  <li class="w-full m-0 hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                      >Montorio</a
+                    >
+                  </li>
+                  <li class="w-full hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-1"
+                      >San Michele</a
+                    >
+                  </li>
+                  <li class="w-full hover:bg-gray-50">
+                    <a
+                      href="#"
+                      class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 w-full"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="user-menu-item-2"
+                      >Un Altro</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+    </header>
+
+    <div class="relative px-6 isolate pt-14 lg:px-8">
+      <div
+        class="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+      <div class="max-w-2xl py-32 mx-auto sm:py-48 lg:py-56">
+        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div
+            class="relative px-3 py-1 text-sm leading-6 text-gray-600 rounded-full ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+          >
+            Announcing our next round of funding.
+            <a href="#" class="font-semibold text-indigo-600"
+              ><span class="absolute inset-0" aria-hidden="true"></span>Read
+              more <span aria-hidden="true">&rarr;</span></a
+            >
+          </div>
+        </div>
+        <div class="text-center">
+          <h1
+            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+          >
+            Gustoteca al Zoo
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
+            fugiat aliqua.
+          </p>
+          <div class="flex items-center justify-center mt-10 gap-x-6">
+            <a
+              href="#"
+              class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >Esplora la nostra selezione</a
+            >
+            <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+              >Su di noi <span aria-hidden="true">→</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+    </div>
+
+    <!-- <nav
+      class="fixed top-0 left-0 right-0 flex items-center w-auto px-1 py-2 bg-gray-600 md:hidden justify-left"
+    >
+      <a
+        href="#"
+        class="relative px-3 py-2 mx-1 text-sm font-medium text-white bg-gray-900 rounded-md"
+        aria-current="page"
+        >Home</a
+      >
+      <a
+        href="#"
+        class="relative px-3 py-2 mx-1 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+        >Chi</a
+      >
+      <a
+        href="#"
+        class="relative px-3 py-2 mx-1 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+        >Menu</a
+      >
+      <a
+        href="#"
+        class="relative px-3 py-2 mx-1 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+        >Orari</a
+      >
+      <a
+        href="#"
+        id="nav-centri"
+        class="absolute px-3 py-2 text-sm font-medium text-gray-300 rounded-md right-2 hover:bg-gray-700 hover:text-white"
+        >Centri</a
+      >
+      <ul
+        id="centri-list"
+        class="absolute top-[100%] z-10 block origin-top-right bg-white rounded-md shadow-lg right-0 w-min h-min ring-1 ring-black ring-opacity-5 whitespace-nowrap"
+      >
+        <li class="hover:bg-gray-50 ">
+          <a
+            href="#"
+            class="block px-4 py-2 text-sm text-gray-700"
+            role="menuitem"
+            id="user-menu-item-0"
+            >Montorio</a
+          >
+        </li>
+        <li class="hover:bg-gray-50 ">
+          <a
+            href="#"
+            class="block px-4 py-2 text-sm text-gray-700"
+            role="menuitem"
+            tabindex="-1"
+            id="user-menu-item-1"
+            >San Michele</a
+          >
+        </li>
+        <li class="hover:bg-gray-50">
+          <a
+            href="#"
+            class="block px-4 py-2 text-sm text-gray-700"
+            role="menuitem"
+            tabindex="-1"
+            id="user-menu-item-2"
+            >Un Altro</a
+          >
+        </li>
+      </ul>
+    </nav> -->
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
