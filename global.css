@@ -1,3 +1,11 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 html,
 body {
   background-color: transparent;
@@ -75,21 +83,4 @@ body {
     opacity: 0;
     scale: 0;
   }
-}
-
-
-#filter-section-ingredients-desktop {
-  animation: entering 100ms ease-out 1 normal forwards;
-}
-
-#filter-section-ingredients-desktop-minus {
-  display: none;
-}
-
-#filter-section-allergens-desktop {
-  animation: entering 100ms ease-out 1 normal forwards;
-}
-
-#filter-section-allergens-desktop-minus {
-  display: none;
 }

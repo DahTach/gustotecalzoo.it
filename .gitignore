@@ -1,3 +1,10 @@
 node_modules/
 src/styles.css
 .DS_Store
+bun.lockb
+package-lock.json
+package.json
+postcss.config.js
+README.md
+tailwind.config.js
+styles.css
